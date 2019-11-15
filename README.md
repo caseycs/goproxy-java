@@ -31,7 +31,14 @@ This is the dependency you need:
 ```
 
 Then, you implement `com.yegor256.goproxy.Storage` interface
-and connect it to your HTTP front and your data storage.
+and pass it to the instance of `com.yegor256.goproxy.Front`. Then, you
+connect the `front` to your HTTP front:
+
+```java
+Front front = new Front(storage);
+InputStream data = front.get("/foo/bar/@v/0.0.0.info");
+// Return the data to your HTTP client
+```
 
 Read the [Javadoc](http://www.javadoc.io/doc/com.yegor256/goproxy)
 for more technical details.
